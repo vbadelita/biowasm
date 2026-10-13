@@ -326,12 +326,16 @@
 		},
 		{
 			"name": "mafft",
-			"programs": ["tbfast", "dvtditr"],
+			"programs": ["disttbfast", "dndpre", "pairlocalalign", "addsingle", "tbfast", "dvtditr"],
 			"description": "Multiple sequence alignment for amino acid or nucleotide sequences",
 			"versions": [
 				{
 					"version": "7.520",
 					"branch": "v7.520"
+				},
+				{
+					"version": "7.526",
+					"branch": "v7.526"
 				}
 			]
 		},

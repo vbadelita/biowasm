@@ -1,0 +1,9 @@
+nt-fftns2        native     6.6s  wasm     6.8s  200/200 identical rows
+aa-fftns2        native     0.2s  wasm     0.2s  150/150 identical rows
+nt-auto          native     6.4s  wasm     6.8s  200/200 identical rows
+aa-auto          native    14.1s  wasm    11.7s  150/150 identical rows
+nt-linsi         native   139.7s  wasm   118.9s  150/150 identical rows
+aa-linsi         native    14.3s  wasm    11.5s  150/150 identical rows
+nt-add           native     4.2s  wasm     4.1s  70/70 identical rows
+nt-addfrag       native    81.7s  wasm    72.6s  70/70 identical rows
+aa-addfrag       native     0.7s  wasm     0.7s  70/70 identical rows

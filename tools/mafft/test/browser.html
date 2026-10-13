@@ -1,0 +1,18 @@
+<!doctype html>
+<!-- Loaded by browser-test.mjs: runs examples/mafft.js through Aioli in a real browser.
+     ?build=<URL of a folder with the six .js/.wasm files>&mode=..&type=..&in=<URL>&add=<URL> -->
+<script src="https://biowasm.com/cdn/v3/aioli.js"></script>
+<script type="module">
+import { mafft, aioliRunner } from "../examples/mafft.js";
+const q = new URLSearchParams(location.search);
+const programs = ["disttbfast", "dndpre", "pairlocalalign", "addsingle", "tbfast", "dvtditr"];
+try {
+	const CLI = await new Aioli(["base/1.0.0", ...programs.map(program => ({
+		tool: "mafft", version: "7.526", program, reinit: true, urlPrefix: new URL(q.get("build"), location.href).href,
+	}))], { printInterleaved: false });
+	const get = u => u ? fetch(u).then(r => r.text()) : null;
+	const t0 = performance.now();
+	const r = await mafft({ runner: aioliRunner(CLI), mode: q.get("mode"), type: q.get("type"), input: await get(q.get("in")), add: await get(q.get("add")) });
+	window.result = { fasta: r.fasta, mode: r.mode, seconds: (performance.now() - t0) / 1000 };
+} catch (e) { window.result = { error: String(e?.stack || e) }; }
+</script>
